@@ -38,32 +38,18 @@ public class SplashActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE);
         boolean isFirstRun = sharedPreferences.getBoolean("isFirstRun", true);
 
-        File parent = getExternalFilesDir(null);
-        File file = new File(parent, "hello");
-        File child = new File(file.getAbsoluteFile(), "child.txt");
-        file.mkdir();
-        child.mkdir();
-
-
-        try {
-            child.createNewFile();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-
-//        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-//            if (isFirstRun) {
-//                Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
-//                startActivity(intent);
-//                SharedPreferences.Editor editor = sharedPreferences.edit();
-//                editor.putBoolean("isFirstRun", false);
-//                editor.apply();
-//            } else {
-//                Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
-//                startActivity(intent);
-//            }
-//        }, 3000);
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            if (isFirstRun) {
+                Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
+                startActivity(intent);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("isFirstRun", false);
+                editor.apply();
+            } else {
+                Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        }, 3000);
 
 
 //        Thread thread = new Thread(new Runnable() {
