@@ -212,15 +212,15 @@ public class NewDiaryActivity extends AppCompatActivity {
 
     }
 
-    private void openCamera() {
-        if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(NewDiaryActivity.this, new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_CODE);
-            return;
-        }
+        private void openCamera() {
+            if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(NewDiaryActivity.this, new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_CODE);
+                return;
+            }
 
-        Intent intent = new Intent(ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, 99);
-    }
+            Intent intent = new Intent(ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intent, 99);
+        }
 
     private void openImage() {
         if (ActivityCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
